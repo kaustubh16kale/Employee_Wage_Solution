@@ -1,10 +1,10 @@
-#UC7
+#UC8   taking input according to the company
 import random as rm
 class Company:
-    def __init__(self):
-        self.RATE_PER_HOUR = 20
-        self.TOTAL_HOUR = 8
-        self.PART_TIME_HOUR = 4
+    def __init__(self,RATE_PER_HOUR=0,TOTAL_HOUR=0,PART_TIME_HOUR=0):
+        self.RATE_PER_HOUR = RATE_PER_HOUR
+        self.TOTAL_HOUR = TOTAL_HOUR
+        self.PART_TIME_HOUR = PART_TIME_HOUR
         self.WORKING_DAY_PER_MONTH = 0
         self.TOTAL_WORKING_HOURS = 0
         self.CURRENT_DAY = 1
@@ -50,13 +50,31 @@ class Company:
 
 
 
-    def month(self):
-        while self.CURRENT_DAY<=20:
+    # def month(self):
+    #     while self.CURRENT_DAY<=20:
+    #         self.check_attendance()
+
+    #     self.total_monthly_wage()
+    #     print(self.wages_per_day)
+
+    def month(self, days=20, total_hour=8, part_time_hour=4):
+        self.TOTAL_HOUR = total_hour
+        self.PART_TIME_HOUR = part_time_hour
+        while self.CURRENT_DAY <= days:
             self.check_attendance()
 
         self.total_monthly_wage()
         print(self.wages_per_day)
 
 
-company=Company()
-company.month()
+companyA=Company(100,5,5)
+companyA.month()
+
+companyB=Company(10,8,5)
+companyB.month()
+
+companyC=Company(10,5,20)
+companyC.month()
+
+companyD=Company(4,5,9)
+companyD.month()
