@@ -25,7 +25,7 @@ def check_attendance():
             print("Employee is present and done a partime ")
             WORKING_DAY_PER_MONTH+= 1
             TOTAL_WORKING_HOURS += (PART_TIME_HOUR + TOTAL_HOUR)
-            wages_per_day[CURRENT_DAY]=(RATE_PER_HOUR*(TOTAL_HOUR+PART_TIME_HOUR))
+            wages_per_day[CURRENT_DAY]=(RATE_PER_HOUR*(PART_TIME_HOUR))
             calculate_wage_partime()
             work_hours()
         case _ :
@@ -52,7 +52,7 @@ def work_hours():
 
 
 
-while WORKING_DAY_PER_MONTH <=20 and TOTAL_WORKING_HOURS <=100:
+while CURRENT_DAY<=20:
     check_attendance()
 
 total_monthly_wage()
