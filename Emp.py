@@ -1,61 +1,62 @@
+#UC7
 import random as rm
-#UC9_storing_dailywage_days
-RATE_PER_HOUR=20
-TOTAL_HOUR=8
-PART_TIME_HOUR=4
-WORKING_DAY_PER_MONTH=0
-TOTAL_WORKING_HOURS=0
-CURRENT_DAY=1
-wages_per_day={}
+class Company:
+    def __init__(self):
+        self.RATE_PER_HOUR = 20
+        self.TOTAL_HOUR = 8
+        self.PART_TIME_HOUR = 4
+        self.WORKING_DAY_PER_MONTH = 0
+        self.TOTAL_WORKING_HOURS = 0
+        self.CURRENT_DAY = 1
+        self.wages_per_day = {}
 
-def check_attendance():
-    global WORKING_DAY_PER_MONTH
-    global TOTAL_WORKING_HOURS
-    global CURRENT_DAY
-    attendance=rm.randint(0,2)
-    match attendance:
-        case 1: 
-            print("Employee is present ")
-            WORKING_DAY_PER_MONTH +=1
-            TOTAL_WORKING_HOURS +=TOTAL_HOUR
-            wages_per_day[CURRENT_DAY]=(RATE_PER_HOUR*(TOTAL_HOUR))
-            calculate_wage()
-            work_hours()
-        case 2:
-            print("Employee is present and done a partime ")
-            WORKING_DAY_PER_MONTH+= 1
-            TOTAL_WORKING_HOURS += (PART_TIME_HOUR + TOTAL_HOUR)
-            wages_per_day[CURRENT_DAY]=(RATE_PER_HOUR*(PART_TIME_HOUR))
-            calculate_wage_partime()
-            work_hours()
-        case _ :
-            print("Employee is absent")
-            wages_per_day[CURRENT_DAY]="absent"
-    CURRENT_DAY+=1
+    def check_attendance(self):
+        attendance=rm.randint(0,2)
+        match attendance:
+            case 1: 
+                print("Employee is present ")
+                self.WORKING_DAY_PER_MONTH +=1
+                self.TOTAL_WORKING_HOURS +=self.TOTAL_HOUR
+                self.wages_per_day[self.CURRENT_DAY]=(self.RATE_PER_HOUR*(self.TOTAL_HOUR))
+                self.calculate_wage()
+                self.work_hours()
+            case 2:
+                print("Employee is present and done a partime ")
+                self.WORKING_DAY_PER_MONTH+= 1
+                self.TOTAL_WORKING_HOURS += (self.PART_TIME_HOUR + self.TOTAL_HOUR)
+                self.wages_per_day[self.CURRENT_DAY]=(self.RATE_PER_HOUR*(self.PART_TIME_HOUR))
+                self.calculate_wage_partime()
+                self.work_hours()
+            case _ :
+                print("Employee is absent")
+                self.wages_per_day[self.CURRENT_DAY]="absent"
+        self.CURRENT_DAY+=1
 
 
-def calculate_wage():
-    print("Total wage payable is : ",RATE_PER_HOUR*(TOTAL_HOUR))
-    # wages_per_day.append(RATE_PER_HOUR*(TOTAL_HOUR))
+    def calculate_wage(self):
+        print("Total wage payable is : ",self.RATE_PER_HOUR*(self.TOTAL_HOUR))
+        # wages_per_day.append(RATE_PER_HOUR*(TOTAL_HOUR))
 
-def calculate_wage_partime():
-    print("Total Payable wage includine part time is",RATE_PER_HOUR*(TOTAL_HOUR+PART_TIME_HOUR))
-    # wages_per_day.append(RATE_PER_HOUR*(TOTAL_HOUR+PART_TIME_HOUR))
+    def calculate_wage_partime(self):
+        print("Total Payable wage includine part time is",self.RATE_PER_HOUR*(self.PART_TIME_HOUR))
+        # wages_per_day.append(RATE_PER_HOUR*(TOTAL_HOUR+PART_TIME_HOUR))
 
 
-def total_monthly_wage():
-    print("The total monthly wage for the employee is",TOTAL_WORKING_HOURS*RATE_PER_HOUR)
+    def total_monthly_wage(self):
+        print("The total monthly wage for the employee is",self.TOTAL_WORKING_HOURS*self.RATE_PER_HOUR)
 
-def work_hours():
-    print("total work hours completed ", TOTAL_WORKING_HOURS)
+    def work_hours(self):
+        print("total work hours completed ", self.TOTAL_WORKING_HOURS)
 
 
 
+    def month(self):
+        while self.CURRENT_DAY<=20:
+            self.check_attendance()
 
-while CURRENT_DAY<=20:
-    check_attendance()
-
-total_monthly_wage()
-print(wages_per_day)
+        self.total_monthly_wage()
+        print(self.wages_per_day)
 
 
+company=Company()
+company.month()
