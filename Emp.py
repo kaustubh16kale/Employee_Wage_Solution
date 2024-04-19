@@ -34,11 +34,11 @@ class Company:
 
 
     def calculate_wage(self):
-        print("Total wage payable is : ",self.RATE_PER_HOUR*(self.TOTAL_HOUR))
+        print("Daily wage payable is : ",self.RATE_PER_HOUR*(self.TOTAL_HOUR))
         # wages_per_day.append(RATE_PER_HOUR*(TOTAL_HOUR))
 
     def calculate_wage_partime(self):
-        print("Total Payable wage includine part time is",self.RATE_PER_HOUR*(self.PART_TIME_HOUR))
+        print("Daily Payable wage includine part time is",self.RATE_PER_HOUR*(self.PART_TIME_HOUR))
         # wages_per_day.append(RATE_PER_HOUR*(TOTAL_HOUR+PART_TIME_HOUR))
 
 
