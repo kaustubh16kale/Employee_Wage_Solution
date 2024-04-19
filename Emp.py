@@ -1,11 +1,12 @@
 import random as rm
-#UC7_function_workinghours
+#UC8_storing_dailywage_totalwage
 RATE_PER_HOUR=20
 TOTAL_HOUR=8
 PART_TIME_HOUR=4
 WORKING_DAY_PER_MONTH=0
 TOTAL_WORKING_HOURS=0
 
+wages_per_day=[]
 
 def check_attendance():
     global WORKING_DAY_PER_MONTH
@@ -26,12 +27,16 @@ def check_attendance():
             work_hours()
         case _ :
             print("Employee is absent")
+            wages_per_day.append(0)
 
 def calculate_wage():
     print("Total wage payable is : ",RATE_PER_HOUR*(TOTAL_HOUR))
+    wages_per_day.append(RATE_PER_HOUR*(TOTAL_HOUR))
 
 def calculate_wage_partime():
     print("Total Payable wage includine part time is",RATE_PER_HOUR*(TOTAL_HOUR+PART_TIME_HOUR))
+    wages_per_day.append(RATE_PER_HOUR*(TOTAL_HOUR+PART_TIME_HOUR))
+
 
 def total_monthly_wage():
     print("The total monthly wage for the employee is",TOTAL_WORKING_HOURS*RATE_PER_HOUR)
@@ -46,5 +51,6 @@ while WORKING_DAY_PER_MONTH <=20 and TOTAL_WORKING_HOURS <=100:
     check_attendance()
 
 total_monthly_wage()
+print(wages_per_day)
 
 
